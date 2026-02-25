@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeCrest – Premium Engineering Squads</title>
+    <meta
+      name="description"
+      content="CodeCrest builds premium, on-demand engineering squads for ambitious SaaS and fintech founders."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='%230A0A0A'/%3E%3Cpath d='M8 21L14 7h4l6 14h-3.6l-1.2-3.2h-5.4L12.6 21H8zm7.1-9.6L13.6 16h3l-1.5-4.6z' fill='%23FFD700'/%3E%3C/svg%3E" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: ['class', '[data-theme="dark"]'],
+        theme: {
+          extend: {
+            colors: {
+              cc: {
+                bg: '#050509',
+                surface: '#0B0B12',
+                surfaceSoft: '#111111',
+                border: '#1E1E2A',
+                muted: '#9CA3AF',
+                accent: '#FFD700'
+              }
+            },
+            boxShadow: {
+              'soft-glow':
+                '0 22px 65px rgba(0,0,0,0.85), 0 0 0 1px rgba(148,163,184,0.18)',
+              'accent-glow':
+                '0 0 0 1px rgba(250,204,21,0.45), 0 22px 70px rgba(234,179,8,0.35)'
+            },
+            borderRadius: {
+              xl2: '1.25rem'
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      .glass-nav {
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+      }
+
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(18px) scale(0.99);
+        transition:
+          opacity 420ms ease-out,
+          transform 520ms ease-out,
+          filter 300ms ease-out;
+        will-change: opacity, transform;
+      }
+
+      .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 18px rgba(250, 204, 21, 0.12));
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .reveal-on-scroll,
+        .reveal-on-scroll.is-visible {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+          filter: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-cc-bg text-slate-100 antialiased selection:bg-yellow-400/20 selection:text-yellow-100"
+    data-theme="dark"
+  >
+    <!-- Background glow -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none fixed inset-x-0 top-[-20%] z-0 flex justify-center"
+    >
+      <div
+        class="h-72 w-[40rem] rounded-full bg-gradient-to-b from-yellow-500/20 via-yellow-400/10 to-transparent blur-3xl"
+      ></div>
+    </div>
+
+    <!-- Navbar -->
+    <header
+      class="glass-nav fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-black/40"
+      data-navbar
+    >
+      <div
+        class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8"
+      >
+        <a href="#hero" class="flex items-center gap-3">
+          <div
+            class="flex h-9 w-9 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-yellow-500/10 via-yellow-500/5 to-transparent shadow-soft-glow"
+          >
+            <span class="text-lg font-semibold text-cc-accent">C</span>
+          </div>
+          <div class="flex flex-col">
+            <span
+              class="text-[11px] font-semibold tracking-[0.32em] text-slate-200"
+            >
+              CODECREST
+            </span>
+            <span class="text-[11px] text-slate-500">
+              Premium engineering squads
+            </span>
+          </div>
+        </a>
+
+        <nav
+          class="hidden items-center gap-8 text-xs font-medium text-slate-300 md:flex"
+          aria-label="Main navigation"
+        >
+          <a href="#what-we-do" class="hover:text-white transition-colors"
+            >What we do</a
+          >
+          <a href="#services" class="hover:text-white transition-colors"
+            >Services</a
+          >
+          <a href="#how-it-works" class="hover:text-white transition-colors"
+            >How it works</a
+          >
+          <a href="#portfolio" class="hover:text-white transition-colors"
+            >Portfolio</a
+          >
+          <a href="#hire-developers" class="hover:text-white transition-colors"
+            >Hire developers</a
+          >
+          <a href="#join-developers" class="hover:text-white transition-colors"
+            >Join as developer</a
+          >
+          <a href="#contact" class="hover:text-white transition-colors"
+            >Contact</a
+          >
+        </nav>
+
+        <div class="hidden items-center gap-3 md:flex">
+          <a
+            href="#join-developers"
+            class="text-xs font-medium text-slate-300 hover:text-white transition-colors"
+          >
+            Join the network
+          </a>
+          <a
+            href="#hire-developers"
+            class="group inline-flex items-center gap-2 rounded-full bg-cc-accent px-4 py-2 text-xs font-semibold text-black shadow-accent-glow transition hover:-translate-y-[1px] hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/80"
+          >
+            <span>Hire elite devs</span>
+            <span
+              class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-black/15 text-[11px] transition group-hover:bg-black/25"
+              aria-hidden="true"
+              >↗</span
+            >
+          </a>
+        </div>
+
+        <button
+          type="button"
+          class="inline-flex items-center justify-center rounded-full border border-white/10 bg-black/60 p-2 text-slate-200 shadow-soft-glow md:hidden"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <span class="sr-only">Toggle navigation</span>
+          <svg
+            class="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id="mobile-nav"
+        data-nav-menu
+        class="mx-auto hidden max-w-7xl px-5 pb-4 text-sm text-slate-300 opacity-0 transition-opacity"
+      >
+        <div
+          class="mt-2 space-y-1 rounded-2xl border border-white/10 bg-black/70 p-3 shadow-soft-glow"
+        >
+          <a
+            href="#what-we-do"
+            class="block rounded-lg px-3 py-2 hover:bg-white/5"
+            >What we do</a
+          >
+          <a
+            href="#services"
+            class="block rounded-lg px-3 py-2 hover:bg-white/5"
+            >Services</a
+          >
+          <a
+            href="#how-it-works"
+            class="block rounded-lg px-3 py-2 hover:bg-white/5"
+            >How it works</a
+          >
+          <a
+            href="#portfolio"
+            class="block rounded-lg px-3 py-2 hover:bg-white/5"
+            >Portfolio</a
+          >
+          <a
+            href="#hire-developers"
+            class="block rounded-lg px-3 py-2 hover:bg-white/5"
+            >Hire developers</a
+          >
+          <a
+            href="#join-developers"
+            class="block rounded-lg px-3 py-2 hover:bg-white/5"
+            >Join as developer</a
+          >
+          <a
+            href="#contact"
+            class="block rounded-lg px-3 py-2 hover:bg-white/5"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="relative z-10 pt-24 lg:pt-28">
+      <!-- Hero -->
+      <section
+        id="hero"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 pb-16 pt-8 lg:flex lg:items-center lg:gap-16 lg:px-8 lg:pb-24 lg:pt-10"
+      >
+        <div class="flex-1 space-y-8">
+          <div
+            class="inline-flex items-center gap-2 rounded-full border border-yellow-500/20 bg-yellow-500/5 px-3 py-1 text-[11px] font-medium text-yellow-200 shadow-soft-glow"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-yellow-400"></span>
+            <span>Code-first squads for funded founders</span>
+          </div>
+
+          <div class="space-y-4">
+            <h1
+              class="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl"
+            >
+              Build like a world-class
+              <span class="text-cc-accent">product org</span>, from day zero.
+            </h1>
+            <p
+              class="max-w-xl text-sm leading-relaxed text-cc-muted sm:text-base"
+            >
+              CodeCrest assembles premium, battle-tested developers into small,
+              autonomous squads that ship SaaS, fintech and developer tools at
+              startup speed and enterprise quality.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#hire-developers"
+              class="group inline-flex items-center justify-center gap-2 rounded-full bg-cc-accent px-5 py-2.5 text-sm font-semibold text-black shadow-accent-glow transition hover:-translate-y-[1px] hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/80"
+            >
+              <span>Hire a squad</span>
+              <svg
+                class="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 15L15 5M9 5H15V11"
+                  stroke="black"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="#join-developers"
+              class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-600/70 bg-slate-900/60 px-5 py-2.5 text-sm font-medium text-slate-100 shadow-soft-glow transition hover:-translate-y-[1px] hover:border-yellow-400/80 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/70"
+            >
+              <span>Join as developer</span>
+            </a>
+          </div>
+
+          <dl class="grid gap-6 pt-4 text-xs text-cc-muted sm:grid-cols-3">
+            <div class="space-y-1">
+              <dt class="text-[11px] uppercase tracking-[0.18em] text-slate-500">
+                Products shipped
+              </dt>
+              <dd class="text-lg font-semibold text-slate-100">40+ SaaS</dd>
+            </div>
+            <div class="space-y-1">
+              <dt class="text-[11px] uppercase tracking-[0.18em] text-slate-500">
+                Average kickoff
+              </dt>
+              <dd class="text-lg font-semibold text-slate-100">&lt; 10 days</dd>
+            </div>
+            <div class="space-y-1">
+              <dt class="text-[11px] uppercase tracking-[0.18em] text-slate-500">
+                NPS from founders
+              </dt>
+              <dd class="text-lg font-semibold text-slate-100">82</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div
+          class="mt-10 flex-1 space-y-4 rounded-[1.6rem] border border-white/10 bg-gradient-to-br from-slate-900/70 via-black/80 to-slate-900/40 p-6 shadow-soft-glow lg:mt-0"
+        >
+          <p class="text-xs font-medium text-slate-400">
+            A squad model engineered for
+            <span class="text-cc-accent">focus & speed</span>.
+          </p>
+          <div class="space-y-3 text-xs text-slate-300">
+            <div class="flex items-start gap-3">
+              <div
+                class="mt-0.5 h-5 w-5 shrink-0 rounded-full bg-yellow-500/15 text-[11px] text-yellow-300 ring-1 ring-yellow-400/40"
+              >
+                <span class="flex h-full items-center justify-center">1</span>
+              </div>
+              <p>
+                Hands-on technical leadership paired with senior product
+                engineers who have shipped at Stripe, Shopify, Figma and fast
+                Series A/B teams.
+              </p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="mt-0.5 h-5 w-5 shrink-0 rounded-full bg-yellow-500/15 text-[11px] text-yellow-300 ring-1 ring-yellow-400/40"
+              >
+                <span class="flex h-full items-center justify-center">2</span>
+              </div>
+              <p>
+                Opinionated delivery rituals, pragmatic architecture and a code
+                quality bar aligned with long-term ownership.
+              </p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div
+                class="mt-0.5 h-5 w-5 shrink-0 rounded-full bg-yellow-500/15 text-[11px] text-yellow-300 ring-1 ring-yellow-400/40"
+              >
+                <span class="flex h-full items-center justify-center">3</span>
+              </div>
+              <p>
+                Plug-and-play with your stack and culture — from early designs
+                to production reliability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What We Do -->
+      <section
+        id="what-we-do"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16"
+      >
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,1.4fr),minmax(0,1fr)]">
+          <div class="space-y-4">
+            <p
+              class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500"
+            >
+              What we do
+            </p>
+            <h2
+              class="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            >
+              We build product-engineering squads that feel
+              <span class="text-cc-accent">in‑house</span>, not outsourced.
+            </h2>
+            <p class="text-sm leading-relaxed text-cc-muted sm:text-base">
+              CodeCrest pairs founders with tight-knit teams of senior
+              developers, designers and EMs. Each squad owns a clear product
+              surface area and ships in weeks, not quarters — with the safety
+              and reliability of a mature engineering org.
+            </p>
+          </div>
+          <div
+            class="grid gap-4 rounded-2xl border border-white/10 bg-slate-950/70 p-5 text-xs text-cc-muted shadow-soft-glow sm:grid-cols-2"
+          >
+            <div class="space-y-1.5">
+              <p class="text-[11px] font-semibold text-slate-400">
+                Where we excel
+              </p>
+              <ul class="space-y-1">
+                <li>• Early product discovery & MVPs</li>
+                <li>• V2 rebuilds & design systems</li>
+                <li>• Complex SaaS & fintech workflows</li>
+                <li>• Developer tools & platforms</li>
+              </ul>
+            </div>
+            <div class="space-y-1.5">
+              <p class="text-[11px] font-semibold text-slate-400">
+                How we operate
+              </p>
+              <ul class="space-y-1">
+                <li>• 2–6 person dedicated squads</li>
+                <li>• Weekly demos & runway visibility</li>
+                <li>• Async-friendly comms & docs</li>
+                <li>• Pragmatic, boring infrastructure</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section
+        id="services"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16"
+      >
+        <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div class="space-y-3">
+            <p
+              class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500"
+            >
+              Services
+            </p>
+            <h2
+              class="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            >
+              A squad for every
+              <span class="text-cc-accent">critical milestone</span>.
+            </h2>
+            <p class="max-w-xl text-sm leading-relaxed text-cc-muted sm:text-base">
+              From zero-to-one experiments to scaling to thousands of customers,
+              CodeCrest adapts the team and cadence to your stage, not the
+              other way around.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <article
+            class="group rounded-xl2 border border-white/8 bg-gradient-to-br from-slate-900/80 via-black/80 to-slate-900/40 p-5 shadow-soft-glow transition hover:-translate-y-1 hover:shadow-accent-glow"
+          >
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-sm font-semibold text-white">
+                Product discovery & MVP
+              </h3>
+              <span
+                class="rounded-full bg-yellow-500/10 px-2 py-0.5 text-[10px] font-medium text-yellow-300 ring-1 ring-yellow-400/30"
+                >0 → 1</span
+              >
+            </div>
+            <p class="mt-2 text-xs leading-relaxed text-cc-muted">
+              Validate the right product quickly with lean experiments, opinionated UX and
+              production-ready code that won’t need a rewrite three months later.
+            </p>
+            <ul class="mt-3 space-y-1.5 text-[11px] text-slate-400">
+              <li>• Founder-led discovery & roadmapping</li>
+              <li>• Clickable prototypes in days</li>
+              <li>• Launch-ready in 8–12 weeks</li>
+            </ul>
+          </article>
+
+          <article
+            class="group rounded-xl2 border border-white/8 bg-gradient-to-br from-slate-900/80 via-black/80 to-slate-900/40 p-5 shadow-soft-glow transition hover:-translate-y-1 hover:shadow-accent-glow"
+          >
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-sm font-semibold text-white">
+                Product-engineering squads
+              </h3>
+              <span
+                class="rounded-full bg-yellow-500/10 px-2 py-0.5 text-[10px] font-medium text-yellow-300 ring-1 ring-yellow-400/30"
+                >Scale</span
+              >
+            </div>
+            <p class="mt-2 text-xs leading-relaxed text-cc-muted">
+              Dedicated, cross-functional squads that own a product surface area
+              — from roadmap to architecture to iteration.
+            </p>
+            <ul class="mt-3 space-y-1.5 text-[11px] text-slate-400">
+              <li>• Staffed with senior ICs only</li>
+              <li>• Weekly demo & KPI reviews</li>
+              <li>• Co-own hiring your first in-house team</li>
+            </ul>
+          </article>
+
+          <article
+            class="group rounded-xl2 border border-white/8 bg-gradient-to-br from-slate-900/80 via-black/80 to-slate-900/40 p-5 shadow-soft-glow transition hover:-translate-y-1 hover:shadow-accent-glow"
+          >
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-sm font-semibold text-white">
+                Platform & modernization
+              </h3>
+              <span
+                class="rounded-full bg-yellow-500/10 px-2 py-0.5 text-[10px] font-medium text-yellow-300 ring-1 ring-yellow-400/30"
+                >Infra</span
+              >
+            </div>
+            <p class="mt-2 text-xs leading-relaxed text-cc-muted">
+              Untangle legacy systems, introduce observability and ship a
+              platform that supports your next stage of growth.
+            </p>
+            <ul class="mt-3 space-y-1.5 text-[11px] text-slate-400">
+              <li>• Design systems & UI kits</li>
+              <li>• API & data platform squads</li>
+              <li>• Reliability & SRE engagements</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section
+        id="how-it-works"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16"
+      >
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)]">
+          <div class="space-y-3">
+            <p
+              class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500"
+            >
+              How it works
+            </p>
+            <h2
+              class="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            >
+              A clear path from first call to first shipped feature.
+            </h2>
+            <p class="max-w-xl text-sm leading-relaxed text-cc-muted sm:text-base">
+              We compress months of hiring and onboarding into a few weeks,
+              while keeping you in control of strategy and quality.
+            </p>
+          </div>
+          <div
+            class="rounded-2xl border border-white/10 bg-slate-950/70 p-5 text-xs text-cc-muted shadow-soft-glow"
+          >
+            <p class="text-[11px] font-semibold text-slate-400">
+              Typical engagement
+            </p>
+            <p class="mt-1">
+              Many squads start as a three-month engagement, then extend as we
+              become your go-to product-engineering arm.
+            </p>
+          </div>
+        </div>
+
+        <ol
+          class="mt-8 grid gap-5 text-sm text-cc-muted sm:grid-cols-3 sm:text-xs"
+        >
+          <li
+            class="rounded-xl2 border border-white/8 bg-gradient-to-br from-slate-900/80 via-black/80 to-slate-900/40 p-5 shadow-soft-glow"
+          >
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-[11px] font-semibold text-slate-400">01</p>
+              <span class="text-[10px] text-slate-500">1–2 days</span>
+            </div>
+            <h3 class="mt-2 text-sm font-semibold text-white">
+              Deep-dive & fit
+            </h3>
+            <p class="mt-2 text-xs leading-relaxed">
+              We map your product, team and runway, then propose a squad shape,
+              operating cadence and technical approach.
+            </p>
+          </li>
+          <li
+            class="rounded-xl2 border border-white/8 bg-gradient-to-br from-slate-900/80 via-black/80 to-slate-900/40 p-5 shadow-soft-glow"
+          >
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-[11px] font-semibold text-slate-400">02</p>
+              <span class="text-[10px] text-slate-500">1 week</span>
+            </div>
+            <h3 class="mt-2 text-sm font-semibold text-white">
+              Squad assembly
+            </h3>
+            <p class="mt-2 text-xs leading-relaxed">
+              You meet the proposed squad, we align on roadmap slices, success
+              metrics and rituals. Kickoff is usually within 7–10 days.
+            </p>
+          </li>
+          <li
+            class="rounded-xl2 border border-white/8 bg-gradient-to-br from-slate-900/80 via-black/80 to-slate-900/40 p-5 shadow-soft-glow"
+          >
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-[11px] font-semibold text-slate-400">03</p>
+              <span class="text-[10px] text-slate-500">Weekly</span>
+            </div>
+            <h3 class="mt-2 text-sm font-semibold text-white">
+              Ship & iterate
+            </h3>
+            <p class="mt-2 text-xs leading-relaxed">
+              We ship weekly demos against a clear value roadmap, regularly
+              revisiting scope as you learn from customers and investors.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Portfolio -->
+      <section
+        id="portfolio"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16"
+      >
+        <div class="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+          <div class="space-y-3">
+            <p
+              class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500"
+            >
+              Portfolio
+            </p>
+            <h2
+              class="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            >
+              Work from CodeCrest squads.
+            </h2>
+            <p class="max-w-xl text-sm leading-relaxed text-cc-muted sm:text-base">
+              Names and numbers are lightly anonymized, but the problems,
+              constraints and outcomes are very real.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <article
+            class="rounded-xl2 border border-white/10 bg-cc-surface p-5 shadow-soft-glow transition hover:-translate-y-1 hover:shadow-accent-glow"
+          >
+            <p class="text-[11px] font-semibold text-cc-accent">Fintech • Series B</p>
+            <h3 class="mt-2 text-sm font-semibold text-white">
+              Real-time treasury dashboard.
+            </h3>
+            <p class="mt-2 text-xs text-cc-muted">
+              A B2B platform aggregating multi-currency accounts and payouts
+              with second-level freshness and CFO-friendly UX.
+            </p>
+            <ul class="mt-3 space-y-1 text-[11px] text-cc-muted">
+              <li>• From concept to launch in 14 weeks.</li>
+              <li>• Integrated with 6 banking partners.</li>
+              <li>• 0 high-severity incidents in first 6 months.</li>
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl2 border border-white/10 bg-cc-surface p-5 shadow-soft-glow transition hover:-translate-y-1 hover:shadow-accent-glow"
+          >
+            <p class="text-[11px] font-semibold text-cc-accent">SaaS • Series A</p>
+            <h3 class="mt-2 text-sm font-semibold text-white">
+              Design system & front-end rebuild.
+            </h3>
+            <p class="mt-2 text-xs text-cc-muted">
+              Partnered with an internal design org to ship a token-driven,
+              multi-brand system powering web and desktop apps.
+            </p>
+            <ul class="mt-3 space-y-1 text-[11px] text-cc-muted">
+              <li>• 60% reduction in UI bugs.</li>
+              <li>• 35% faster key user flows.</li>
+              <li>• Unified design tokens across products.</li>
+            </ul>
+          </article>
+
+          <article
+            class="rounded-xl2 border border-white/10 bg-cc-surface p-5 shadow-soft-glow transition hover:-translate-y-1 hover:shadow-accent-glow"
+          >
+            <p class="text-[11px] font-semibold text-cc-accent">
+              DevTools • Seed
+            </p>
+            <h3 class="mt-2 text-sm font-semibold text-white">
+              API observability with streaming analytics.
+            </h3>
+            <p class="mt-2 text-xs text-cc-muted">
+              A developer-first observability platform handling billions of
+              events per day, with fast queries and intuitive charts.
+            </p>
+            <ul class="mt-3 space-y-1 text-[11px] text-cc-muted">
+              <li>• 3-person squad from idea to GA.</li>
+              <li>• P90 dashboards under 1s.</li>
+              <li>• Tiered usage-based pricing integration.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Hire Developers -->
+      <section
+        id="hire-developers"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16"
+      >
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)]">
+          <div class="space-y-3">
+            <p
+              class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500"
+            >
+              Hire developers
+            </p>
+            <h2
+              class="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            >
+              Tell us about the team you need.
+            </h2>
+            <p class="max-w-xl text-sm leading-relaxed text-cc-muted sm:text-base">
+              Share what you’re building, the constraints you’re under and the skills
+              you’re missing. We’ll respond with a squad proposal and timeline in a
+              couple of business days.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-cc-muted">
+              <li>• No obligation, no aggressive sales.</li>
+              <li>• Typical squads start from $25–60k / month.</li>
+              <li>• Flexible ramp-up and ramp-down windows.</li>
+            </ul>
+          </div>
+
+          <div
+            class="rounded-xl2 border border-white/10 bg-slate-950/80 p-5 shadow-soft-glow"
+          >
+            <form id="hire-form" class="space-y-4" novalidate>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label
+                    for="hire-name"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Your name</label
+                  >
+                  <input
+                    type="text"
+                    id="hire-name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="hire-company"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Company</label
+                  >
+                  <input
+                    type="text"
+                    id="hire-company"
+                    name="company"
+                    autocomplete="organization"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="hire-email"
+                  class="mb-1 block text-xs font-medium text-slate-200"
+                  >Work email</label
+                >
+                <input
+                  type="email"
+                  id="hire-email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                />
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label
+                    for="hire-project-type"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Project type</label
+                  >
+                  <select
+                    id="hire-project-type"
+                    name="projectType"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  >
+                    <option value="">Select an option</option>
+                    <option value="mvp">New product / MVP</option>
+                    <option value="rebuild">Rebuild or V2</option>
+                    <option value="scale">Scaling existing product</option>
+                    <option value="platform">Platform / internal tools</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    for="hire-budget"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Monthly budget (INR)</label
+                  >
+                  <select
+                    id="hire-budget"
+                    name="budget"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  >
+                    <option value="">Select a range</option>
+                    <option value="10-25k">₹10k – ₹25k</option>
+                    <option value="25-40k">₹25k – ₹40k</option>
+                    <option value="40-60k">₹40k – ₹60k</option>
+                    <option value="60-80k">₹60k – ₹80k</option>
+                    <option value="80k+">₹80k+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="hire-timeline"
+                  class="mb-1 block text-xs font-medium text-slate-200"
+                  >Ideal start</label
+                >
+                <select
+                  id="hire-timeline"
+                  name="timeline"
+                  required
+                  class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                >
+                  <option value="">Select a timeline</option>
+                  <option value="immediately">Immediately</option>
+                  <option value="1-month">Within 1 month</option>
+                  <option value="3-months">Within 3 months</option>
+                  <option value="flexible">Flexible</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  for="hire-notes"
+                  class="mb-1 block text-xs font-medium text-slate-200"
+                  >What are you building?</label
+                >
+                <textarea
+                  id="hire-notes"
+                  name="notes"
+                  rows="4"
+                  required
+                  class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  placeholder="Share context, constraints and what success looks like for you."
+                ></textarea>
+              </div>
+
+              <p
+                class="text-[11px] text-slate-500"
+                id="hire-privacy"
+              >
+                We only use this information to understand your needs and will
+                never share it with third parties.
+              </p>
+
+              <div class="flex items-center justify-between gap-4 pt-1">
+                <button
+                  type="submit"
+                  data-submit-button
+                  class="inline-flex items-center justify-center gap-2 rounded-full bg-cc-accent px-5 py-2.5 text-sm font-semibold text-black shadow-accent-glow transition hover:-translate-y-[1px] hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/80 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  Submit request
+                </button>
+                <p
+                  class="flex-1 text-right text-[11px] text-slate-500"
+                  aria-live="polite"
+                  data-form-status
+                ></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Join as Developer -->
+      <section
+        id="join-developers"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16"
+      >
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)]">
+          <div class="space-y-3">
+            <p
+              class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500"
+            >
+              Join as developer
+            </p>
+            <h2
+              class="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            >
+              Build with founders who care about craft.
+            </h2>
+            <p class="max-w-xl text-sm leading-relaxed text-cc-muted sm:text-base">
+              We partner with experienced engineers and designers who enjoy
+              small teams, clear ownership and the satisfaction of seeing their
+              work in the wild.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-cc-muted">
+              <li>• Remote-first, with sane meeting culture.</li>
+              <li>• Long-term, focused engagements with great teams.</li>
+              <li>• Backed by a community of senior peers.</li>
+            </ul>
+          </div>
+
+          <div
+            class="rounded-xl2 border border-white/10 bg-slate-950/80 p-5 shadow-soft-glow"
+          >
+            <form id="developer-form" class="space-y-4" novalidate>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label
+                    for="dev-name"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Full name</label
+                  >
+                  <input
+                    type="text"
+                    id="dev-name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="dev-email"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="dev-email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  />
+                </div>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label
+                    for="dev-role"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Primary role</label
+                  >
+                  <select
+                    id="dev-role"
+                    name="role"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  >
+                    <option value="">Select a role</option>
+                    <option value="frontend">Senior Frontend Engineer</option>
+                    <option value="backend">Senior Backend Engineer</option>
+                    <option value="fullstack">Senior Full-stack Engineer</option>
+                    <option value="designer">Product Designer</option>
+                    <option value="pm">Product Engineer / PM</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    for="dev-experience"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Years of experience</label
+                  >
+                  <select
+                    id="dev-experience"
+                    name="experience"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  >
+                    <option value="">Select a range</option>
+                    <option value="3-5">3–5 years</option>
+                    <option value="5-8">5–8 years</option>
+                    <option value="8-12">8–12 years</option>
+                    <option value="12+">12+ years</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="dev-portfolio"
+                  class="mb-1 block text-xs font-medium text-slate-200"
+                  >Portfolio / GitHub / LinkedIn</label
+                >
+                <input
+                  type="url"
+                  id="dev-portfolio"
+                  name="portfolio"
+                  required
+                  class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  placeholder="https://"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="dev-skills"
+                  class="mb-1 block text-xs font-medium text-slate-200"
+                  >What are you best at?</label
+                >
+                <textarea
+                  id="dev-skills"
+                  name="skills"
+                  rows="4"
+                  required
+                  class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  placeholder="Share languages, stacks and the types of products you love working on."
+                ></textarea>
+              </div>
+
+              <p class="text-[11px] text-slate-500">
+                We review every application carefully. If there’s a fit, we’ll
+                reach out with next steps and potential squads.
+              </p>
+
+              <div class="flex items-center justify-between gap-4 pt-1">
+                <button
+                  type="submit"
+                  data-submit-button
+                  class="inline-flex items-center justify-center gap-2 rounded-full bg-cc-accent px-5 py-2.5 text-sm font-semibold text-black shadow-accent-glow transition hover:-translate-y-[1px] hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/80 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  Join the network
+                </button>
+                <p
+                  class="flex-1 text-right text-[11px] text-slate-500"
+                  aria-live="polite"
+                  data-form-status
+                ></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section
+        id="contact"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 py-12 lg:px-8 lg:py-16"
+      >
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)]">
+          <div class="space-y-3">
+            <p
+              class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500"
+            >
+              Contact
+            </p>
+            <h2
+              class="text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+            >
+              Not sure where to start? Let’s talk.
+            </h2>
+            <p class="max-w-xl text-sm leading-relaxed text-cc-muted sm:text-base">
+              Share a few lines about your company or idea and we’ll reply with
+              a candid point of view on how we’d approach it — even if CodeCrest
+              isn’t the right partner yet.
+            </p>
+            <div class="mt-4 space-y-1 text-xs text-cc-muted">
+              <p><span class="text-slate-400">Email</span> hello@codecrest.studio</p>
+              <p><span class="text-slate-400">Timezone</span> Mostly US & EU teams</p>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl2 border border-white/10 bg-slate-950/80 p-5 shadow-soft-glow"
+          >
+            <form id="contact-form" class="space-y-4" novalidate>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label
+                    for="contact-name"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="contact-email"
+                    class="mb-1 block text-xs font-medium text-slate-200"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  for="contact-subject"
+                  class="mb-1 block text-xs font-medium text-slate-200"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="contact-subject"
+                  name="subject"
+                  required
+                  class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="contact-message"
+                  class="mb-1 block text-xs font-medium text-slate-200"
+                  >Message</label
+                >
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="block w-full rounded-xl border border-slate-800/80 bg-black/40 px-3.5 py-2.5 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-yellow-400/70 focus:ring-2 focus:ring-yellow-400/70"
+                  placeholder="Share context, questions or links."
+                ></textarea>
+              </div>
+
+              <div class="flex items-center justify-between gap-4 pt-1">
+                <button
+                  type="submit"
+                  data-submit-button
+                  class="inline-flex items-center justify-center gap-2 rounded-full bg-cc-accent px-5 py-2.5 text-sm font-semibold text-black shadow-accent-glow transition hover:-translate-y-[1px] hover:bg-yellow-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/80 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  Send message
+                </button>
+                <p
+                  class="flex-1 text-right text-[11px] text-slate-500"
+                  aria-live="polite"
+                  data-form-status
+                ></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section
+        id="cta"
+        class="reveal-on-scroll mx-auto max-w-7xl px-5 pb-16 pt-4 lg:px-8 lg:pb-24"
+      >
+        <div
+          class="flex flex-col items-start justify-between gap-6 rounded-[1.75rem] border border-yellow-500/20 bg-gradient-to-r from-yellow-500/15 via-yellow-500/5 to-transparent px-5 py-6 shadow-accent-glow md:flex-row md:items-center lg:px-8 lg:py-7"
+        >
+          <div class="space-y-2">
+            <h2 class="text-lg font-semibold text-white sm:text-xl">
+              Ready to put a CodeCrest squad behind your roadmap?
+            </h2>
+            <p class="max-w-xl text-xs text-slate-100/80 sm:text-sm">
+              Share what you’re building and we’ll respond with a squad
+              recommendation, timeline and ballpark budget — no fluff.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href="#hire-developers"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-yellow-300 shadow-soft-glow ring-1 ring-black/40 transition hover:-translate-y-[1px] hover:bg-slate-900 hover:text-yellow-200"
+            >
+              Start a project conversation
+            </a>
+            <a
+              href="#contact"
+              class="text-xs font-medium text-black/80 hover:text-black"
+            >
+              Or send a quick note →
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-black/60">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-6 text-xs text-slate-400 md:flex-row md:items-center md:justify-between lg:px-8"
+      >
+        <div class="space-y-1">
+          <p class="text-sm font-medium text-slate-100">CodeCrest</p>
+          <p class="text-[11px] text-slate-500">
+            Premium engineering squads for ambitious founders.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <span class="text-[11px] text-slate-500"
+            >© <span id="year"></span> CodeCrest. All rights reserved.</span
+          >
+          <span class="hidden h-3 w-px bg-white/15 md:inline-block"></span>
+          <a
+            href="#hire-developers"
+            class="text-[11px] text-slate-400 transition hover:text-slate-100"
+            >Hire developers</a
+          >
+          <a
+            href="#join-developers"
+            class="text-[11px] text-slate-400 transition hover:text-slate-100"
+            >Join as developer</a
+          >
+          <a
+            href="#contact"
+            class="text-[11px] text-slate-400 transition hover:text-slate-100"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
+
