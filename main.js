@@ -3,6 +3,24 @@
 
 import { db, collection, addDoc, serverTimestamp } from './firebase.js';
 
+// Add this inside your init() function
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
 function initYearBadge() {
   const yearEl = document.getElementById('year');
   if (yearEl) {
@@ -193,7 +211,8 @@ function attachFormHandler(formId, collectionName) {
 
 function initForms() {
   attachFormHandler('hire-form', 'hireRequests');
-  attachFormHandler('developer-form', 'developerApplications');
+  // CHANGE THIS: Ensure 'developer-form' matches the ID in your HTML
+  attachFormHandler('developer-form', 'developerApplications'); 
   attachFormHandler('contact-form', 'contactMessages');
 }
 
